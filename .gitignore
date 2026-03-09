@@ -1,0 +1,62 @@
+############################
+# Root Git Ignore for CineScope
+############################
+
+############################
+# Node / Dependencies
+############################
+node_modules/
+**/node_modules/
+pnpm-lock.yaml
+yarn.lock
+
+############################
+# Build Artifacts
+############################
+dist/
+build/
+**/dist/
+**/build/
+*.tsbuildinfo
+
+############################
+# Environment & Secrets
+############################
+.env
+.env.*
+**/.env
+**/.env.*
+
+############################
+# Logs & Coverage
+############################
+logs/
+**/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+coverage/
+**/coverage/
+
+############################
+# OS / Editor Files
+############################
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+############################
+# Misc
+############################
+*.local
+*.tmp
+*.temp
+*.pid
+
+docs
+docs/
