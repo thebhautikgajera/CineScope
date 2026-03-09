@@ -15,14 +15,11 @@
       (function () {
         try {
           var stored = window.localStorage.getItem('theme');
-          var prefersDark =
-            window.matchMedia &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var theme = stored === 'light' || stored === 'dark'
-            ? stored
-            : prefersDark
-              ? 'dark'
-              : 'light';
+          // If there is a stored preference, use it; otherwise default to dark.
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : 'dark';
           var html = document.documentElement;
           html.classList.remove('light', 'dark');
           html.classList.add(theme);

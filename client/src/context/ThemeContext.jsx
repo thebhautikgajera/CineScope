@@ -6,23 +6,18 @@ const ThemeContext = createContext({
   toggleTheme: () => {},
 });
 
-const getInitialTheme = () => {
-  if (typeof window === 'undefined') return 'dark';
-
-  const stored = window.localStorage.getItem('theme');
-  if (stored === 'light' || stored === 'dark') {
-    return stored;
-  }
-
-  const prefersDark =
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  return prefersDark ? 'dark' : 'light';
-};
-
 export const ThemeProvider = ({ children }) => {
-  const [theme, setThemeState] = useState(getInitialTheme);
+  const [theme, setThemeState] = useState(() => {
+    if (typeof window === 'undefined') return 'dark';
+
+    const stored = window.localStorage.getItem('theme');
+    if (stored === 'light' || stored === 'dark') {
+      return stored;
+    }
+
+    // Default to dark theme when there is no stored preference
+    return 'dark';
+  });
 
   const applyThemeToDocument = useCallback((nextTheme) => {
     if (typeof document === 'undefined') return;
